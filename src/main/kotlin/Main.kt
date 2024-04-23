@@ -38,13 +38,9 @@ fun findMaxElement(numbers: IntArray): Int? {
     return numbers.maxOrNull()
 }
 
-fun fibonacci(number: Int): List<Int> {
-    if (number == 0) {
-        return listOf()
-    }
-
+fun fibonacci(number: Int): Int {
     if (number == 1) {
-        return listOf(0)
+        return 0
     }
 
     val sequence = mutableListOf(0, 1)
@@ -53,7 +49,7 @@ fun fibonacci(number: Int): List<Int> {
         sequence.add(sequence[i - 1] + sequence[i - 2])
     }
 
-    return sequence
+    return sequence.last()
 }
 
 fun isPalindrome(string: String): Boolean {
