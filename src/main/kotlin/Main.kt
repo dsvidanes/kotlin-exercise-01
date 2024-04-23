@@ -1,16 +1,114 @@
-package org.example
+fun getFactorial(number: Int): Int {
+    var factorial = 1
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
-
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    if (number == 0 || number == 1) {
+        return factorial
     }
+
+    for (i in 2 .. number) {
+        factorial *= i
+    }
+
+    return factorial
+}
+
+fun isPrime(number: Int): Boolean {
+    if (number <= 1) {
+        return false
+    }
+
+    if (number == 2) {
+        return true
+    }
+
+    for (i in 2 until number) {
+        if (number % i == 0) {
+            return false
+        }
+    }
+
+    return true
+}
+
+fun reverseString(string: String): String {
+    return string.reversed()
+}
+
+fun findMaxElement(numbers: IntArray): Int? {
+    return numbers.maxOrNull()
+}
+
+fun fibonacci(number: Int): List<Int> {
+    if (number == 0) {
+        return listOf()
+    }
+
+    if (number == 1) {
+        return listOf(0)
+    }
+
+    val sequence = mutableListOf(0, 1)
+
+    for (i in 2 until number) {
+        sequence.add(sequence[i - 1] + sequence[i - 2])
+    }
+
+    return sequence
+}
+
+fun isPalindrome(string: String): Boolean {
+    val lowerCase = string.lowercase()
+
+    return lowerCase == lowerCase.reversed()
+}
+
+fun sumOfDigits(number: Int): Int {
+    var sum = 0
+    var currentNumber = number
+
+    while (currentNumber != 0) {
+        val digit = currentNumber % 10
+        sum += digit
+        currentNumber /= 10
+    }
+
+    return sum
+}
+
+fun calculateGCD(a: Int, b: Int): Int {
+    if (b == 0) {
+        return a
+    }
+
+    return calculateGCD(b, a % b)
+}
+
+fun countVowels(string: String): Int {
+    val vowels = setOf('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
+    var count = 0
+
+    for (characters in string) {
+        if (characters in vowels) {
+            count += 1
+        }
+    }
+
+    return count
+}
+
+fun celsiusToFahrenheit(celsius: Double): Double {
+    return (celsius * 9.0 / 5.0) + 32
+}
+
+fun main() {
+    println(getFactorial(10))
+    println(isPrime(7))
+    println(reverseString("reversed"))
+    println(findMaxElement(intArrayOf(5, 3, 10, 6, 2)))
+    println(isPalindrome("racecar"))
+    println(sumOfDigits(12345))
+    println(calculateGCD(17, 5))
+    println(countVowels("Daniella Vidanes"))
+    println(celsiusToFahrenheit(25.0))
+    println(fibonacci(10))
 }
